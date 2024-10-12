@@ -10,57 +10,53 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="../AudioCallApp/css/style.css" />
   </head>
   <body>
-    <h1>Audio Call</h1>
-    <div class="form-floating">
-      <textarea
-        class="form-control"
-        placeholder="Add access token here"
-        id="accessToken"
-        style="width: 600px; height: 150"
-      ></textarea>
-      <label for="accessToken">Access Token</label>
+    <div class="container mt-5">
+      <h1 class="text-center mb-4">Audio Call</h1>
+      <div class="form-floating mb-3">
+        <textarea
+          class="form-control"
+          placeholder="Add access token here"
+          id="accessToken"
+          style="height: 150px"
+        ></textarea>
+        <label for="accessToken">Access Token</label>
+      </div>
+      <div class="text-center mb-4">
+        <button type="button" class="btn btn-primary" id="loginBtn">Login</button>
+        <div class="mt-2">
+          Logged in: <span id="userId" class="status-text">Not logged in</span>
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="from"
+          placeholder="Your ID"
+        />
+        <label for="from">From:</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="to"
+          placeholder="Recipient ID"
+        />
+        <label for="to">To:</label>
+      </div>
+      <div class="text-center mb-4">
+        Call status: <span id="callStatus" class="status-text">Not started</span>
+      </div>
+      <div class="text-center">
+        <button type="button" class="btn btn-success me-2" id="callBtn">Call</button>
+        <button type="button" class="btn btn-danger me-2" id="hangupBtn">Hangup</button>
+        <button type="button" class="btn btn-secondary" id="muteBtn">Mute</button>
+      </div>
     </div>
-    <br />
-    <button type="button" class="btn btn-success" id="loginBtn">Login</button>
-    Logged in: <span id="userId" style="color: red">Not logged in</span>
-    <br />
-    <br />
-    <div class="form-floating">
-      <input
-        style="width: 600px"
-        type="text"
-        class="form-control"
-        id="from"
-        placeholder="Your ID"
-      />
-      <label for="from">From:</label>
-    </div>
-    <br />
-    <br />
-    <div class="form-floating">
-      <input
-        style="width: 600px"
-        type="text"
-        class="form-control"
-        id="to"
-        placeholder="Recipient ID"
-      />
-      <label for="to">To:</label>
-    </div>
-    <br />
-    <div>
-      <br />
-      Call status: <span id="callStatus" style="color: red">Not started</span>
-    </div>
-    <br />
-    <div>
-      <button type="button" class="btn btn-success" id="callBtn">Call</button>
-      <button type="button" class="btn btn-success" id="hangupBtn">
-        Hangup
-      </button>
-      <button type="button" class="btn btn-success" id="muteBtn">Mute</button>
-    </div>
+    <script src="../AudioCallApp/js/script.js"></script>
   </body>
 </html>

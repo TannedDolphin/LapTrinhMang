@@ -1,0 +1,22 @@
+body {
+    background-color: #f8f9fa;
+  }
+  
+  h1 {
+    color: #343a40;
+  }
+  
+  .status-text {
+    color: red;
+    font-weight: bold;
+  }
+  
+  #accessToken,
+  #from,
+  #to {
+    max-width: 100%;
+  }
+  
+  .btn {
+    min-width: 100px;
+  }
