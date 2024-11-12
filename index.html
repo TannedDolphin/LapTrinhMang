@@ -1,58 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- 
-      This is an HTML comment
-      You can write text in a comment and the content won't be visible in the page
-    -->
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <title>Voice Call App</title>
 
-    <title>Test Voice call</title>
-
-    <!-- The website stylesheet -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-<!--     <link rel="stylesheet" href="/style.css" /> -->
-
-    <!-- The website JavaScript file -->
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <!-- JQuery and Stringee SDK -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="js/lib/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.stringee.com/sdk/web/latest/stringee-web-sdk.min.js"></script>
     <script src="/script.js" defer></script>
-      <script type="text/javascript" src="js/lib/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="https://cdn.stringee.com/sdk/web/latest/stringee-web-sdk.min.js"></script>
+
+    <style>
+      body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+      }
+      #accessToken {
+        resize: none;
+      }
+      #login-section,
+      #call-section {
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 600px;
+      }
+      #callStatus,
+      #loggedUserId {
+        font-weight: bold;
+      }
+      .button-group button {
+        margin-right: 10px;
+      }
+      #incoming-call-div {
+        display: none;
+      }
+      .muted {
+      background-color: #6c757d !important;
+      color: #ffffff;
+  }
+    </style>
   </head>
+
   <body>
-    <div>
-          <div>
-            <label for="accessToken">YOUR ACCESS TOKEN</label>
-            <textarea id="accessToken" rows="6" cols="50" style="height: 130px; width: 600px; resize: none;" placeholdet="YOUR ACCESS TOKEN"></textarea>
-          </div>
-            <br/>
-            <br/>
-            <button id="loginBtn">Login</button>
-            Logged in: <span id="loggedUserId" style="color: red">Not logged</span>
+    <div class="container">
+      <div id="login-section" class="text-center">
+        <h3 class="mb-3">Login to Voice Call Service</h3>
+        <div class="mb-3">
+          <textarea
+            id="accessToken"
+            class="form-control"
+            rows="4"
+            placeholder="Enter your access token here"
+          ></textarea>
         </div>
+        <button id="loginBtn" class="btn btn-primary mb-2">Login</button>
+        <p>
+          Logged in as: <span id="loggedUserId" class="text-danger">Not logged</span>
+        </p>
+      </div>
 
-        <div>
-            <br/>
-            <input id="callTo" type="text" name="toUsername" style="width: 200px;" placeholder="Call username" >
-
-            <button id="callBtn" >Voice call</button>
-            <button id="hangupBtn" >Hangup</button>
-
-            <button disabled id="muteBtn" onclick="mute()">Mute</button>
+      <div id="call-section" class="text-center">
+        <h3 class="mb-3">Make a Call</h3>
+        <div class="mb-3">
+          <input
+            id="callTo"
+            type="text"
+            class="form-control"
+            placeholder="Enter username to call"
+          />
         </div>
-
-        <div>
-            <br/>
-            Call status: <span id="callStatus" style="color: red">Not started</span>
+        <div class="button-group mb-3">
+          <button id="callBtn" class="btn btn-success">Voice Call</button>
+          <button id="hangupBtn" class="btn btn-danger">Hangup</button>
+          <button id="muteBtn" class="btn btn-secondary" >Mute</button>
         </div>
+        <p>
+          Call Status: <span id="callStatus" class="text-danger">Not started</span>
+        </p>
+      </div>
 
-        <div id="incoming-call-div">
-            <br />
-            <button id="answerBtn" >Answer</button>
-            <button id="rejectBtn" >Reject</button>
-        </div>
+      <div id="incoming-call-div" class="text-center">
+        <h4>Incoming Call</h4>
+        <button id="answerBtn" class="btn btn-primary">Answer</button>
+        <button id="rejectBtn" class="btn btn-secondary">Reject</button>
+      </div>
+    </div>
+    <audio id="remoteAudio" autoplay controls style="display:none;"></audio>
+
   </body>
 </html>
