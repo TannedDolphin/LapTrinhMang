@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="https://glitch.com/favicon.ico" />
-    <title>Voice Call App</title>
+    <title>Audio Call App</title>
 
     <!-- Bootstrap CSS -->
     <link
@@ -48,15 +48,15 @@
       }
       .muted {
       background-color: #6c757d !important;
-      color: #ffffff;
-  }
+      color: #ffffff !important;
+      }
     </style>
   </head>
 
   <body>
     <div class="container">
       <div id="login-section" class="text-center">
-        <h3 class="mb-3">Login to Voice Call Service</h3>
+        <h3 class="mb-3">Login to Audio Call Service</h3>
         <div class="mb-3">
           <textarea
             id="accessToken"
@@ -82,7 +82,7 @@
           />
         </div>
         <div class="button-group mb-3">
-          <button id="callBtn" class="btn btn-success">Voice Call</button>
+          <button id="callBtn" class="btn btn-success">Call</button>
           <button id="hangupBtn" class="btn btn-danger">Hangup</button>
           <button id="muteBtn" class="btn btn-secondary" >Mute</button>
         </div>
@@ -90,7 +90,7 @@
           Call Status: <span id="callStatus" class="text-danger">Not started</span>
         </p>
       </div>
-
+      
       <div id="incoming-call-div" class="text-center">
         <h4>Incoming Call</h4>
         <button id="answerBtn" class="btn btn-primary">Answer</button>
